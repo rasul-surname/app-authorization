@@ -2,7 +2,11 @@ import { Form, Input, Button, Checkbox } from 'antd';
 
 const FormComponent = () => {
     const onFinish = (values) => {
-        console.log('Success:', values);
+        if(values.username !== 'admin@admin.com' && values.password !== 'admin') {
+            alert('Введенные данные неверны, убедитесь, что они соответствуют данным вашей учетной записи.');
+        } else {
+            console.log('Success:', values);
+        }
     };
 
     const onFinishFailed = (errorInfo) => {
