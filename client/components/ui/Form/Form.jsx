@@ -1,8 +1,10 @@
 import { Form, Input, Button, Checkbox } from 'antd';
 
-const FormComponent = () => {
+const FormComponent = (props) => {
+    let state = props.state;
+
     const onFinish = (values) => {
-        if(values.username !== 'admin@admin.com' && values.password !== 'admin') {
+        if(values.username !== state.login && values.password !== state.password) {
             alert('Введенные данные неверны, убедитесь, что они соответствуют данным вашей учетной записи.');
         } else {
             console.log('Success:', values);
