@@ -1,5 +1,9 @@
 import { Form, Input, Button, Checkbox } from 'antd';
 
+import classes from './Form.module.css'
+import Link from "next/link";
+import React from "react";
+
 const FormComponent = (props) => {
     let state = props.state;
 

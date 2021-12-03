@@ -1,0 +1,28 @@
+.content {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 50px;
+    background-color: #F0F2F5;
+}
+
+.contentFixed {
+    position: fixed;
+    display: flex;
+    width: 700px;
+}
+
+.sidebar {
+    width: 208px;
+}
+
+.panel1 {
+    margin: 20px;
+    width: 100%;
+}
+
+.panel2 {
+    margin-top: 20px;
+    margin-left: 700px;
+    width: 100%;
+    height: 2000px;
+}

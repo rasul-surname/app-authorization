@@ -1,0 +1,20 @@
+.container {
+    padding: 20px;
+    height: 100%;
+    text-align: center;
+    background-color: #fff;
+}
+.btn {
+    width: 400px;
+    margin: 0 auto;
+    padding: 8px;
+    background: #039281;
+    border-radius: 4px;
+}
+.btnLink {
+    font-size: 18px;
+    color: #ffffff;
+}
+.btnLink:hover {
+    color: #ffffff;
+}
