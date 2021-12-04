@@ -12,16 +12,27 @@ const Home = () => {
     return (
         <Provider store={store}>
             <div className={classes.container}>
-                <Selector state={store.getState().languages}/>
-                <h2>Username: admin@admin.com</h2>
-                <h2>Password: admin</h2>
-                <FormComponent state={store.getState().formPage}/>
-                <h1 className="title">
-                    Read{' '}
-                    <Link href="/feature/home">
-                        <a>home page!</a>
-                    </Link>
-                </h1>
+                <div className={classes.content}>
+                    <Selector state={store.getState().languages}/>
+                    <h2>Логин для входа: admin@admin.com</h2>
+                    <h2>Пароль для входа: admin</h2>
+                    <div className={classes.form}>
+                        <h2 className={classes.form__title}>Войти</h2>
+                        <FormComponent state={store.getState().formPage}/>
+                        <div className={classes.form__signUp}>
+                            <p>Если вы не имеете аккаунта</p>
+                            <Link href="/feature/signUp">
+                                <a>Зарегестрируйтесь</a>
+                            </Link>
+                        </div>
+                    </div>
+                    <h1 className="title">
+                        Cтраница для {' '}
+                        <Link href="/feature/home">
+                            <a>авторизованных!</a>
+                        </Link>
+                    </h1>
+                </div>
             </div>
         </Provider>
     )

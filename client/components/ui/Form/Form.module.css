@@ -1,0 +1,15 @@
+
+.form__input {
+    width: 421px;
+    height: 40px;
+}
+.form__remind {
+    display: flex;
+}
+.form__switch {
+    margin-right: 14px;
+}
+.form__button {
+    width: 100%;
+    border-radius: 4px;
+}
