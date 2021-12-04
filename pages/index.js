@@ -11,7 +11,8 @@ const Home = () => {
   return (
       <Provider store={store}>
           <div className={classes.container}>
-
+              <h2>Username: admin@admin.com</h2>
+              <h2>Password: admin</h2>
               <FormComponent state={store.getState().formPage} />
               <h1 className="title">
                   Read{' '}

@@ -1,17 +1,16 @@
-import { Form, Input, Button, Checkbox } from 'antd';
-
-import classes from './Form.module.css'
-import Link from "next/link";
 import React from "react";
+import Router from 'next/router';
+import { Form, Input, Button, Checkbox } from 'antd';
 
 const FormComponent = (props) => {
     let state = props.state;
 
     const onFinish = (values) => {
-        if(values.username !== state.login && values.password !== state.password) {
+        if(values.username !== state.login || values.password !== state.password) {
             alert('Введенные данные неверны, убедитесь, что они соответствуют данным вашей учетной записи.');
         } else {
             console.log('Success:', values);
+            Router.push('/feature/home');
         }
     };
 
