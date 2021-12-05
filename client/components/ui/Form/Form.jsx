@@ -2,23 +2,48 @@ import React from "react";
 import Router from 'next/router';
 import {Form, Input, Button, Checkbox, Switch} from 'antd';
 import classes from './Form.module.css';
-import Link from "next/link";
 
 const FormComponent = (props) => {
     let state = props.state;
+    let inputUserName = React.createRef();
+    let inputUserPassword = React.createRef();
 
     const onFinish = (values) => {
-        if (values.username !== state.login || values.password !== state.password) {
-            alert('Введенные данные неверны, убедитесь, что они соответствуют данным вашей учетной записи.');
-        } else {
-            console.log('Success:', values);
-            Router.push('/feature/home');
+
+        if(props.registrationFlag) {
+            let flag = false;
+
+            for(let i = 0; i < state.allUsers.length; i++) {
+                let current = state.allUsers[i];
+
+                if(current.login == values.username.trim() && current.password == values.password.trim()) {
+                    flag = true;
+                }
+            }
+            if(flag) {
+                Router.push('/feature/home');
+            } else {
+                alert('Введенные данные неверны, убедитесь, что они соответствуют данным вашей учетной записи.');
+            }
         }
+
+
     };
 
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
+
+    function addUser() {
+        let login = inputUserName.current.state.value;
+        let password = inputUserPassword.current.state.value;
+
+        console.log()
+        if(!props.registrationFlag) {
+            props.store.dispatch({type: 'ADD-USER', login, password});
+            Router.push('/');
+        }
+    }
 
     return (
         <div>
@@ -46,7 +71,7 @@ const FormComponent = (props) => {
                         },
                     ]}
                 >
-                    <Input placeholder='name@domain.com' className={classes.form__input}/>
+                    <Input ref={inputUserName} placeholder='name@domain.com' className={classes.form__input}/>
                 </Form.Item>
                 <Form.Item
                     name="password"
@@ -57,15 +82,15 @@ const FormComponent = (props) => {
                         },
                     ]}
                 >
-                    <Input.Password placeholder='Введите пароль' className={classes.form__input}/>
+                    <Input.Password ref={inputUserPassword} placeholder='Введите пароль' className={classes.form__input}/>
                 </Form.Item>
 
                 <div className={classes.form__remind}>
                     <Switch className={classes.form__switch} defaultChecked/>
                     <p>Запомнить меня</p>
                 </div>
-                <Button type="primary" htmlType="submit" className={classes.form__button}>
-                    Войти
+                <Button type="primary" htmlType="submit" className={classes.form__button} onClick={addUser}>
+                    {props.btnValue}
                 </Button>
             </Form>
 

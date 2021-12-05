@@ -8,11 +8,9 @@
     margin: 0px auto;
     padding: 20px 0px;
 }
-
 .form {
     width: 550px;
-    margin-top: 20px;
-    padding: 16px 60px;
+    padding: 16px 60px 20px;
     text-align: left;
     background: #FFFFFF;
     border: 1px solid #D9D9D9;
