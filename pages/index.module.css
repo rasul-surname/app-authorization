@@ -34,3 +34,19 @@
 .form__signUp a:hover {
     opacity: 0.8;
 }
+.warning {
+    display: none;
+}
+
+@media (max-width: 700px) {
+    .container{
+        display: flex;justify-content: center;
+        align-items: center;
+    }
+    .content {
+        display: none;
+    }
+    .warning {
+        display: block;
+    }
+}

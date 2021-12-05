@@ -6,7 +6,8 @@ import Link from 'next/link';
 import classes from './index.module.css';
 import FormComponent from "../client/components/ui/Form/Form";
 import Selector from "../client/components/ui/Selector/Selector";
-import { Table } from 'antd';
+import {Table} from 'antd';
+import Warning from "../client/components/ui/Warning/Warning";
 
 const Home = () => {
     const columns = [
@@ -31,7 +32,7 @@ const Home = () => {
                     <Selector state={store.getState().languages}/>
                     <div className={classes.form}>
                         <h2 className={classes.form__title}>Войти</h2>
-                        <FormComponent state={store.getState().formPage} btnValue='Войти' registrationFlag={true} />
+                        <FormComponent state={store.getState().formPage} btnValue='Войти' registrationFlag={true}/>
                         <div className={classes.form__signUp}>
                             <p>Если вы не имеете аккаунта</p>
                             <Link href="/feature/signUp">
@@ -47,8 +48,13 @@ const Home = () => {
                     </h1>
                     <div>
                         <h3>Таблица зарегестрированных пользователей</h3>
-                        <Table columns={columns} dataSource={store.getState().formPage.allUsers} size="middle" />
+                        <Table columns={columns} dataSource={store.getState().formPage.allUsers} size="middle"/>
                     </div>
+                </div>
+                <div className={classes.warning}>
+                    <Warning>
+                        Сайт предназначен для устройств с шириной 700px и более
+                    </Warning>
                 </div>
             </div>
         </Provider>

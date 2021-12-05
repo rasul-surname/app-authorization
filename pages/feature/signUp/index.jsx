@@ -3,6 +3,7 @@ import FormComponent from "../../../client/components/ui/Form/Form";
 import classes from "./SignUp.module.css";
 import store from "../../../client/redux/redux-store";
 import Link from "next/link";
+import Warning from "../../../client/components/ui/Warning/Warning";
 
 const SignUp = () => {
     return (
@@ -18,6 +19,11 @@ const SignUp = () => {
                         </Link>
                     </div>
                 </div>
+            </div>
+            <div className={classes.warning}>
+                <Warning>
+                    Сайт предназначен для устройств с шириной 700px и более
+                </Warning>
             </div>
         </div>
     )
