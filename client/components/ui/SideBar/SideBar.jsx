@@ -6,7 +6,11 @@ import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/
 const { SubMenu } = Menu;
 const { Sider } = Layout;
 
-const SideBar = () => {
+import classes from './Sidebar.module.css';
+
+const SideBar = (props) => {
+    let collapsed = props.collapsed;
+
     return (
         <Layout>
             <Sider width={200} className="site-layout-background">
@@ -15,6 +19,7 @@ const SideBar = () => {
                     defaultSelectedKeys={['1']}
                     defaultOpenKeys={['sub1']}
                     style={{ height: '100vh', borderRight: 0 }}
+                    className={collapsed ? classes.show : classes.hide}
                 >
                     <SubMenu key="sub1" icon={<UserOutlined />} title="Sub menu 1">
                         <Menu.Item key="1">Menu Item</Menu.Item>

@@ -10,9 +10,18 @@
     padding: 0px 20px;
     background-color: #008B7A;
 }
+.header__block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header__burger {
+    color: #FFFFFF;
+    transform: scale(1.4);
+}
 .header__title {
     color: #ffffff;
     font-weight: bold;
     letter-spacing: 1.5px;
-    margin: 0px 4px;
+    margin: 0px 14px;
 }

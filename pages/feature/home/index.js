@@ -1,31 +1,49 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
+
+import store from "../../../client/redux/redux-store";
+import {Provider} from "react-redux";
+import Link from "next/link";
 
 import Header from "../../../client/components/ui/Header/Header";
 import SideBar from "../../../client/components/ui/SideBar/SideBar";
-import Panel2 from "../../../client/components/ui/Panel2/Panel2";
-import Panel1 from "../../../client/components/ui/Panel1/Panel1";
+import Panel from "../../../client/components/ui/Panel/Panel";
 
 import classes from './Home.module.css';
-import store from "../../../client/redux/redux-store";
-import {Provider} from "react-redux";
 
-export default function FirstPost() {
+const Home = (props) => {
+    let [collapsed, setCollapsed] = useState(true);
+
+    function toggleCollapsed() {
+        setCollapsed(collapsed = !collapsed);
+    };
+
     return (
         <Provider store={store}>
-            <Header store={store}/>
+            <Header toggleCollapsed={toggleCollapsed} store={store}/>
             <div className={classes.content}>
                 <div className={classes.contentFixed}>
                     <div className={classes.sidebar}>
-                        <SideBar/>
+                        <SideBar collapsed={collapsed} store={store}/>
                     </div>
                     <div className={classes.panel1}>
-                        <Panel1/>
+                        <Panel>
+                            <h2>Panel 1</h2>
+                        </Panel>
                     </div>
                 </div>
                 <div className={classes.panel2}>
-                    <Panel2/>
+                    <Panel>
+                        <h2>Panel 2</h2>
+                            <Link href="/">
+                                <button className={classes.button}>
+                                <a>Выход</a>
+                                </button>
+                            </Link>
+                    </Panel>
                 </div>
             </div>
         </Provider>
     )
 }
+
+export default Home;

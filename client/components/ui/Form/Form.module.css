@@ -1,3 +1,6 @@
+.form__item {
+    margin-bottom: 10px;
+}
 .form__input {
     width: 421px;
     height: 40px;

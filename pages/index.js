@@ -1,13 +1,18 @@
 import React from "react";
-import 'antd/dist/antd.css';
+
 import {Provider} from "react-redux";
 import store from "../client/redux/redux-store";
 import Link from 'next/link';
+
+import 'antd/dist/antd.css';
+import {Table} from 'antd';
 import classes from './index.module.css';
+import logo from '../public/images/qrlogo.png';
+
 import FormComponent from "../client/components/ui/Form/Form";
 import Selector from "../client/components/ui/Selector/Selector";
-import {Table} from 'antd';
 import Warning from "../client/components/ui/Warning/Warning";
+import Image from "next/image";
 
 const Home = () => {
     const columns = [
@@ -29,23 +34,20 @@ const Home = () => {
         <Provider store={store}>
             <div className={classes.container}>
                 <div className={classes.content}>
-                    <Selector state={store.getState().languages}/>
+                    <div className={classes.content__top}>
+                        <Image src={logo} alt=""/>
+                        <Selector state={store.getState().languages}/>
+                    </div>
                     <div className={classes.form}>
                         <h2 className={classes.form__title}>Войти</h2>
                         <FormComponent state={store.getState().formPage} btnValue='Войти' registrationFlag={true}/>
                         <div className={classes.form__signUp}>
                             <p>Если вы не имеете аккаунта</p>
                             <Link href="/feature/signUp">
-                                <a>Зарегестрируйтесь</a>
+                                <a>&#10148;&#10148;&#10148;Зарегестрируйтесь</a>
                             </Link>
                         </div>
                     </div>
-                    <h1 className="title">
-                        Cтраница для {' '}
-                        <Link href="/feature/home">
-                            <a>авторизованных!</a>
-                        </Link>
-                    </h1>
                     <div>
                         <h3>Таблица зарегестрированных пользователей</h3>
                         <Table columns={columns} dataSource={store.getState().formPage.allUsers} size="middle"/>
