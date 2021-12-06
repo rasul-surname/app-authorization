@@ -37,15 +37,18 @@
 }
 .form__signUp a:hover {
     opacity: 0.8;
-
 }
 .warning {
     display: none;
+    font-size: 24px;
+    text-align: center;
+    margin: 0px 40px;
 }
 
 @media (max-width: 700px) {
     .container{
-        display: flex;justify-content: center;
+        display: flex;
+        justify-content: center;
         align-items: center;
     }
     .content {

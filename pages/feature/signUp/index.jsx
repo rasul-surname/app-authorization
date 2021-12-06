@@ -4,12 +4,12 @@ import store from "../../../client/redux/redux-store";
 import Link from "next/link";
 import Image from "next/image";
 
+import classes from "../../index.module.css";
+import logo from '../../../public/images/qrlogo.png';
+
 import FormComponent from "../../../client/components/ui/Form/Form";
 import Warning from "../../../client/components/ui/Warning/Warning";
 import Selector from "../../../client/components/ui/Selector/Selector";
-
-import classes from "../../index.module.css";
-import logo from '../../../public/images/qrlogo.png';
 
 const SignUp = () => {
     return (
@@ -33,7 +33,7 @@ const SignUp = () => {
             </div>
             <div className={classes.warning}>
                 <Warning>
-                    Сайт предназначен для устройств с шириной 700px и более
+                    <p>Сайт предназначен для устройств с шириной 700px и более</p>
                 </Warning>
             </div>
         </div>

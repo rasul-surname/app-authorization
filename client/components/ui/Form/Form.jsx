@@ -7,49 +7,35 @@ const FormComponent = (props) => {
     let listUsers = props.state.allUsers;
     let registrationFlag = props.registrationFlag;
 
-    let inputUserLogin = React.createRef();
-    let inputUserPassword = React.createRef();
-
-    // Проверка пользователей при авторизации
+    // Регистрация/авторизация пользователя
     const onFinish = (values) => {
         let login = values.login;
         let password = values.password;
 
-        if(checkUsers(registrationFlag, login, password, listUsers)) {
-            Router.push('/feature/home');
+        if (registrationFlag) {
+            if (checkUsers(login, password, listUsers)) {
+                Router.push('/feature/home');
+            } else {
+                alert('Введенные данные неверны, убедитесь, что они соответствуют данным вашей учетной записи.');
+            }
+        } else if (!registrationFlag) {
+            props.store.dispatch({type: 'ADD-USER', login, password});
+            Router.push('/');
         } else {
             alert('Введенные данные неверны, убедитесь, что они соответствуют данным вашей учетной записи.');
         }
     };
 
     // Проверка существования пользователей
-    function checkUsers(flag, login, password, listUsers) {
-        if(flag) {
-            for(let i = 0; i < listUsers.length; i++) {
-                let current = listUsers[i];
+    function checkUsers(login, password, listUsers) {
+        for (let i = 0; i < listUsers.length; i++) {
+            let current = listUsers[i];
 
-                if(current.login == login.trim() && current.password == password.trim()) {
-                    return true;
-                }
+            if (current.login == login.trim() && current.password == password.trim()) {
+                return true;
             }
         }
         return false;
-    }
-
-    // Вывод ошибки в случае если форма пустая
-    const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
-    };
-
-    // Добавление пользователя при регистрации
-    function addUser() {
-        let login = inputUserLogin.current.state.value;
-        let password = inputUserPassword.current.state.value;
-
-        if(!registrationFlag) {
-            props.store.dispatch({type: 'ADD-USER', login, password});
-            Router.push('/');
-        }
     }
 
     return (
@@ -66,7 +52,6 @@ const FormComponent = (props) => {
                     remember: true,
                 }}
                 onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
                 autoComplete="off"
             >
                 <Form.Item
@@ -79,7 +64,7 @@ const FormComponent = (props) => {
                     ]}
                     className={classes.form__item}
                 >
-                    <Input ref={inputUserLogin} placeholder='Введите логин' className={classes.form__input} />
+                    <Input placeholder='Введите логин' className={classes.form__input}/>
                 </Form.Item>
                 <Form.Item
                     name="password"
@@ -90,13 +75,14 @@ const FormComponent = (props) => {
                         },
                     ]}
                 >
-                    <Input.Password ref={inputUserPassword} placeholder='Введите пароль' className={classes.form__input}/>
+                    <Input.Password placeholder='Введите пароль'
+                                    className={classes.form__input}/>
                 </Form.Item>
                 <div className={classes.form__remind}>
                     <Switch className={classes.form__switch} defaultChecked/>
                     <p>Запомнить меня</p>
                 </div>
-                <Button type="primary" htmlType="submit" className={classes.form__button} onClick={addUser}>
+                <Button type="primary" htmlType="submit" className={classes.form__button}>
                     {props.btnValue}
                 </Button>
             </Form>

@@ -6,8 +6,8 @@ import Link from 'next/link';
 
 import 'antd/dist/antd.css';
 import {Table} from 'antd';
-import classes from './index.module.css';
 import logo from '../public/images/qrlogo.png';
+import classes from './index.module.css';
 
 import FormComponent from "../client/components/ui/Form/Form";
 import Selector from "../client/components/ui/Selector/Selector";
@@ -35,7 +35,7 @@ const Home = () => {
             <div className={classes.container}>
                 <div className={classes.content}>
                     <div className={classes.content__top}>
-                        <Image src={logo} alt=""/>
+                        <Image src={logo} alt="Логотип"/>
                         <Selector state={store.getState().languages}/>
                     </div>
                     <div className={classes.form}>
@@ -55,7 +55,7 @@ const Home = () => {
                 </div>
                 <div className={classes.warning}>
                     <Warning>
-                        Сайт предназначен для устройств с шириной 700px и более
+                        <p>Сайт предназначен для устройств с шириной 700px и более</p>
                     </Warning>
                 </div>
             </div>

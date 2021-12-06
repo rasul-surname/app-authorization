@@ -1,6 +1,7 @@
 .show{
-    display: block
+    transition: all 0.3s ease-in-out 0s;
 }
 .hide {
-    display: none;
+    transform: translateX(-220px);
+    transition: all 0.3s ease-in-out 0s;
 }

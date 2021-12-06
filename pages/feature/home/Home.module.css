@@ -36,14 +36,24 @@
     border: 0;
     background: #039281;
     border-radius: 4px;
-}
-.button a {
     color: #FFFFFF;
     font-size: 16px;
+}
+.button:hover {
+    opacity: 0.8;
+}
+.warning {
+    display: none;
+    font-size: 24px;
+    text-align: center;
+    margin: 100px 40px;
 }
 
 @media (max-width: 700px) {
     .content {
         display: none;
+    }
+    .warning {
+        display: block;
     }
 }
