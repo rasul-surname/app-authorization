@@ -8,6 +8,7 @@ import 'antd/dist/antd.css';
 import {Table} from 'antd';
 import logo from '../public/images/qrlogo.png';
 import classes from './index.module.css';
+import './firebase';
 
 import FormComponent from "../client/components/ui/Form/Form";
 import Selector from "../client/components/ui/Selector/Selector";

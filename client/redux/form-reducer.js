@@ -8,6 +8,7 @@ let initialState = {
 const formReducer = (state = initialState, action) => {
     switch(action.type) {
         case 'ADD-USER':
+            debugger;
             const newUser = {
                 role: 'Subscriber',
                 login: action.login,

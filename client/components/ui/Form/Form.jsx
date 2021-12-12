@@ -1,6 +1,7 @@
 import React from "react";
 import Router from 'next/router';
 import {Form, Input, Button, Checkbox, Switch} from 'antd';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import classes from './Form.module.css';
 
 const FormComponent = (props) => {
@@ -11,6 +12,10 @@ const FormComponent = (props) => {
     const onFinish = (values) => {
         let login = values.login;
         let password = values.password;
+        const auth = getAuth();
+        signInWithEmailAndPassword(auth, login, password)
+            .then(console.log)
+            .catch(console.error);
 
         if (registrationFlag) {
             if (checkUsers(login, password, listUsers)) {
@@ -19,7 +24,15 @@ const FormComponent = (props) => {
                 alert('Введенные данные неверны, убедитесь, что они соответствуют данным вашей учетной записи.');
             }
         } else if (!registrationFlag) {
-            props.store.dispatch({type: 'ADD-USER', login, password});
+            const auth = getAuth();
+            console.log(auth);
+            createUserWithEmailAndPassword(auth, login, password)
+                .then(({user}) => {
+                    console.log(login, password);
+                    props.store.dispatch({type: 'ADD-USER', login, password});
+                })
+                .catch(console.error);
+
             Router.push('/');
         } else {
             alert('Введенные данные неверны, убедитесь, что они соответствуют данным вашей учетной записи.');
