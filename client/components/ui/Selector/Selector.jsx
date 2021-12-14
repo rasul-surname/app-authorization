@@ -1,10 +1,11 @@
 import React from "react";
 import {Select} from 'antd';
+import {useSelector} from "react-redux";
 
 const {Option} = Select;
 
-const Selector = (props) => {
-    let langObject = props.state;
+const Selector = () => {
+    const langObject = useSelector(state => state.languages);
 
     let langArr = [];
     for (let key in langObject) langArr.push({key: key, lang: langObject[key]});

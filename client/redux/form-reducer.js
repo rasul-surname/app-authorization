@@ -1,3 +1,5 @@
+const ADD_USER = 'ADD_USER';
+
 let initialState = {
     allUsers: [
         {role: 'Super Admin', login: 'admin@admin.com', password: 'admin'},
@@ -7,8 +9,7 @@ let initialState = {
 
 const formReducer = (state = initialState, action) => {
     switch(action.type) {
-        case 'ADD-USER':
-            debugger;
+        case ADD_USER:
             const newUser = {
                 role: 'Subscriber',
                 login: action.login,
@@ -24,3 +25,5 @@ const formReducer = (state = initialState, action) => {
 }
 
 export default formReducer;
+
+export const addUserAC = (login, password) => ({type: ADD_USER, login, password});

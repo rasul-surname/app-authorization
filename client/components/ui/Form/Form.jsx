@@ -3,37 +3,44 @@ import Router from 'next/router';
 import {Form, Input, Button, Checkbox, Switch} from 'antd';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import classes from './Form.module.css';
+import {useDispatch, useSelector} from "react-redux";
+import {addUserAC} from "../../../redux/form-reducer";
 
 const FormComponent = (props) => {
-    let listUsers = props.state.allUsers;
+    const dispatch = useDispatch();
+    const listUsers = useSelector(state => state.formPage.allUsers);
+
     let registrationFlag = props.registrationFlag;
 
     // Регистрация/авторизация пользователя
     const onFinish = (values) => {
         let login = values.login;
         let password = values.password;
-        const auth = getAuth();
-        signInWithEmailAndPassword(auth, login, password)
-            .then(console.log)
-            .catch(console.error);
 
         if (registrationFlag) {
+            const auth = getAuth();
+            signInWithEmailAndPassword(auth, login, password)
+                .then(({user}) => {
+                    console.log(login, password);
+                    dispatch(addUserAC(login, password));
+                })
+                .catch(console.error);
+
             if (checkUsers(login, password, listUsers)) {
-                Router.push('/feature/home');
+                alert('Юзер существует');
+                // Router.push('/feature/home');
             } else {
                 alert('Введенные данные неверны, убедитесь, что они соответствуют данным вашей учетной записи.');
             }
         } else if (!registrationFlag) {
             const auth = getAuth();
-            console.log(auth);
             createUserWithEmailAndPassword(auth, login, password)
                 .then(({user}) => {
-                    console.log(login, password);
-                    props.store.dispatch({type: 'ADD-USER', login, password});
+                    dispatch(addUserAC(login, password));
+                    Router.push('/');
                 })
                 .catch(console.error);
 
-            Router.push('/');
         } else {
             alert('Введенные данные неверны, убедитесь, что они соответствуют данным вашей учетной записи.');
         }

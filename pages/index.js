@@ -5,7 +5,6 @@ import store from "../client/redux/redux-store";
 import Link from 'next/link';
 
 import 'antd/dist/antd.css';
-import {Table} from 'antd';
 import logo from '../public/images/qrlogo.png';
 import classes from './index.module.css';
 import './firebase';
@@ -13,23 +12,10 @@ import './firebase';
 import FormComponent from "../client/components/ui/Form/Form";
 import Selector from "../client/components/ui/Selector/Selector";
 import Warning from "../client/components/ui/Warning/Warning";
+import TableComponent from "../client/components/ui/Table/Table";
 import Image from "next/image";
 
 const Home = () => {
-    const columns = [
-        {
-            title: 'Роль',
-            dataIndex: 'role',
-        },
-        {
-            title: 'Логин',
-            dataIndex: 'login',
-        },
-        {
-            title: 'Пароль',
-            dataIndex: 'password',
-        },
-    ];
 
     return (
         <Provider store={store}>
@@ -37,11 +23,11 @@ const Home = () => {
                 <div className={classes.content}>
                     <div className={classes.content__top}>
                         <Image src={logo} alt="Логотип"/>
-                        <Selector state={store.getState().languages}/>
+                        <Selector />
                     </div>
                     <div className={classes.form}>
                         <h2 className={classes.form__title}>Войти</h2>
-                        <FormComponent state={store.getState().formPage} btnValue='Войти' registrationFlag={true}/>
+                        <FormComponent btnValue='Войти' registrationFlag={true}/>
                         <div className={classes.form__signUp}>
                             <p>Если вы не имеете аккаунта</p>
                             <Link href="/feature/signUp">
@@ -49,10 +35,7 @@ const Home = () => {
                             </Link>
                         </div>
                     </div>
-                    <div>
-                        <h3>Таблица зарегестрированных пользователей</h3>
-                        <Table columns={columns} dataSource={store.getState().formPage.allUsers} size="middle"/>
-                    </div>
+                    <TableComponent />
                 </div>
                 <div className={classes.warning}>
                     <Warning>
