@@ -1,4 +1,5 @@
 const ADD_USER = 'ADD_USER';
+const LOAD_USERS = 'LOAD_USERS';
 
 let initialState = {
     allUsers: [
@@ -9,6 +10,21 @@ let initialState = {
 
 const formReducer = (state = initialState, action) => {
     switch(action.type) {
+        case LOAD_USERS:
+            return {...state,
+                allUsers: [
+                    ...state.allUsers,
+                    ...action.payload.map(item => {
+                        item['role'] = 'Subscriber';
+                        item['login'] = item['email'];
+                        item['password'] = item['username'];
+
+                        delete item['email'];
+                        delete item['username'];
+
+                        return item;
+                    })]
+            }
         case ADD_USER:
             const newUser = {
                 role: 'Subscriber',
@@ -27,3 +43,4 @@ const formReducer = (state = initialState, action) => {
 export default formReducer;
 
 export const addUserAC = (login, password) => ({type: ADD_USER, login, password});
+export const loadUsersAC = (payload) => ({type: LOAD_USERS, payload});

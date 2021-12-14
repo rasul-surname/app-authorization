@@ -14,6 +14,7 @@ import Selector from "../client/components/ui/Selector/Selector";
 import Warning from "../client/components/ui/Warning/Warning";
 import TableComponent from "../client/components/ui/Table/Table";
 import Image from "next/image";
+import fetchUsers from "../client/redux/asyncAction/loadUsers";
 
 const Home = () => {
 
@@ -35,6 +36,7 @@ const Home = () => {
                             </Link>
                         </div>
                     </div>
+                    <button onClick={() => store.dispatch(fetchUsers())}>Загрузить пользователей c jsonplaceholder</button>
                     <TableComponent />
                 </div>
                 <div className={classes.warning}>
