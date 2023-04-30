@@ -16,12 +16,11 @@
 - [Источники](#источники)
 
 ## Технологии
-- [HTML5](https://developer.mozilla.org/en-US/docs/Web/HTML)
-- [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS)
-- [Swiper.js](https://swiperjs.com/)
-- [JQuery](https://jquery.com/)
-- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-- [Google Fonts](https://fonts.google.com/)
+- [Next](https://nextjs.org/)
+- [React](https://react.dev/)
+- [Redux](https://redux.js.org/)
+- [Firebase](https://firebase.google.com/)
+- [AntDesign](https://ant.design/)
 
 ## Начало работы
 На GitHub.com перейдите на главную страницу репозитория, затем:
@@ -47,7 +46,7 @@ npm run dev
 Для установки и запуска проекта желательно скачать любой редактор кода.
 
 ## Содействие
-Хотите поучаствовать? Если вам интересен список задач, напишите мне в любом мессенджере.
+Хотите поучаствовать? Если вам интересен список задач, напишите мне в любом мессенджере, и мы всё обсудим.
 
 ## Вопросы
 Здесь вопросы о частых ошибках.
@@ -57,9 +56,8 @@ npm run dev
 
 ## Список задач
 - [x] Добавить README
-- [ ] Получить пользователей из БД при первоначальной загрузке
-- [ ] Добавить роли
 - [ ] Поправить логику (сейчас работает криво)
+- [ ] Получить пользователей из БД при первоначальной загрузке
 - [ ] Предложите своё?
 
 ## Команда проекта
