@@ -1,12 +1,12 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-    apiKey: 'AIzaSyAlFADLt7cxwnRyb2UR-bJKCu816NF4OhY',
-    authDomain: 'auth-example-77349.firebaseapp.com',
-    projectId: 'auth-example-77349',
-    storageBucket: 'auth-example-77349.appspot.com',
-    messagingSenderId: '551942827181',
-    appId: '1:551942827181:web:a559ca0be2447a9091ea24'
+    apiKey: 'AIzaSyBG9Ep13MQrs7UemtxvWiLJVtfVbjT9lxM',
+    authDomain: 'personal-area-firebase.firebaseapp.com',
+    projectId: 'personal-area-firebase',
+    storageBucket: 'personal-area-firebase.appspot.com',
+    messagingSenderId: '384202823349',
+    appId: '1:384202823349:web:b0ee4251ce822b9a1d10fc'
 };
 
 const app = initializeApp(firebaseConfig);
